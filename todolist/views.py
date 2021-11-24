@@ -14,3 +14,10 @@ class TodoList(APIView):
         todos = Todo.objects.all()
         serializer = TodoSerializer(todos, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        todo = request.data
+        new_todo = Todo(label=todo["label"], done=todo["done"])
+        new_todo.save()
+        serializer = TodoSerializer(todo)
+        return Response(serializer.data)
