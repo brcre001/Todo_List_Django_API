@@ -21,6 +21,7 @@ from todolist import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('todos', views.TodoList.as_view()),
+    # path('todos/<int:position>', views.TodoList.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
